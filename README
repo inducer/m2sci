@@ -1,0 +1,12 @@
+Restrictions on the matlab language that matlab2scilab understands:
+- Must have semicolons in all vector literals.
+- Scripting command support is limited.
+  (for example: "hold off")
+- Distinguishing complex transpose operators from string literals can be hard.
+  Instead of
+    eu(ll,jj,ki) = ev(:,jj)'*exp(i*2*pi*(kv(ki)+(-L:L)')*xv(ll));
+  you should write
+    eu(ll,jj,ki) = ev(:,jj)'...
+	      *exp(i*2*pi*(kv(ki)+(-L:L)')*xv(ll));
+  to avoid  having two single quotes on one line.
+
