@@ -1,3 +1,5 @@
+// Support functions for m2sci
+
 function [ out1, out2 ] = m2sci_eig( in1, in2 )
   [ nout, nin ] = argn()
 
