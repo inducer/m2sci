@@ -89,7 +89,7 @@ export DVIPSFLAGS
 export STATIC
 
 # Add a list of optional trash files that should be deleted by "make clean"
-export TRASH
+export TRASH=matlab_grammar.output
 
 ####################  variables depending on your OCaml-installation
 

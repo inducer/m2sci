@@ -11,9 +11,9 @@ function [ out1, out2 ] = m2sci_eig( in1, in2 )
     end
   elseif nin == 2
     if nout == 2
-      [ alpha, beta ] = spec( in1, in2 );
+      [ alpha, beta, eigenvectors ] = spec( in1, in2 );
     else
-      [ alpha, beta, Z ] = spec( in1, in2 );
+      [ alpha, beta ] = spec( in1, in2 );
     end
     zero_spots = beta == 0;
     beta( zero_spots ) = 1;
@@ -25,7 +25,7 @@ function [ out1, out2 ] = m2sci_eig( in1, in2 )
     alpha( zero_spots ) = %inf;
     eigenvalues = alpha ./ beta;
     if nout == 2
-      out1 = Z
+      out1 = eigenvectors
       out2 = diag( eigenvalues )
     else
       out1 = eigenvalues
@@ -37,5 +37,6 @@ endfunction
 
 function [ output, indices ] = m2sci_sort( in )
   [ output, indices ] = sort( in );
-  output = output($:-1:1);
+  output = output( $:-1:1 );
+  indices = indices( $:-1:1 );
 endfunction
